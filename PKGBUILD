@@ -20,6 +20,18 @@ makedepends=("${_linuxprefix}-headers" "virtualbox-host-dkms=$pkgver")
 provides=('VIRTUALBOX-HOST-MODULES')
 conflicts=("${_linuxprefix}-virtualbox-modules" 'virtualbox-host-dkms')
 replaces=("${_linuxprefix}-virtualbox-modules")
+source=('linux71.patch')
+sha256sums=('5c84bbaed18d8c7e6b302f7110cafa33caed9b5345281cd320f67993037c27e0')
+
+prepare() {
+  mkdir -p vboxhost/${pkgver}_OSE/source_patched
+  cp -av /usr/src/vboxhost-${pkgver}_OSE/* vboxhost/${pkgver}_OSE/source_patched
+  cd vboxhost/${pkgver}_OSE/source_patched/vboxdrv
+  patch -p5 -i $srcdir/linux71.patch
+  cd ../..
+  ln -sfv source_patched source
+}
+
 
 build() {
   _kernver="$(cat /usr/src/${_linuxprefix}/version)"
