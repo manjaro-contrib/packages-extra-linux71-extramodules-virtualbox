@@ -7,9 +7,9 @@
 _linuxprefix=linux71
 
 pkgname=("${_linuxprefix}-virtualbox-host-modules")
-pkgver=7.2.8
+pkgver=7.2.10
 _pkgver="${pkgver}_OSE"
-pkgrel=0.4
+pkgrel=0.1
 pkgdesc='Virtualbox host kernel modules for Manjaro Kernel'
 arch=('x86_64')
 url='http://virtualbox.org'
@@ -20,18 +20,11 @@ makedepends=("${_linuxprefix}-headers" "virtualbox-host-dkms=$pkgver")
 provides=('VIRTUALBOX-HOST-MODULES')
 conflicts=("${_linuxprefix}-virtualbox-modules" 'virtualbox-host-dkms')
 replaces=("${_linuxprefix}-virtualbox-modules")
-source=('linux71.patch')
-sha256sums=('5c84bbaed18d8c7e6b302f7110cafa33caed9b5345281cd320f67993037c27e0')
+sha256sums=()
 
 prepare() {
-  mkdir -p vboxhost/${pkgver}_OSE/source_patched
-  cp -av /usr/src/vboxhost-${pkgver}_OSE/* vboxhost/${pkgver}_OSE/source_patched
-  cd vboxhost/${pkgver}_OSE/source_patched/vboxdrv
-  patch -p5 -i $srcdir/linux71.patch
-  cd ../..
-  ln -sfv source_patched source
+  return 0
 }
-
 
 build() {
   _kernver="$(cat /usr/src/${_linuxprefix}/version)"
