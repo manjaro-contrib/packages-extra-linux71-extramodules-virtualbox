@@ -1,5 +1,5 @@
-# Maintainer: Bernhard Landauer <bernhard@manjaro.org>
 # Maintainer: Philip Müller <philm[at]manjaro[dot]org>
+# Contributor: Bernhard Landauer <bernhard@manjaro.org>
 # Contributor: Christian Hesse <eworm@archlinux.org>
 # Contributor: Sébastien "Seblu" Luttringer
 # Contributor: Ionut Biru <ibiru@archlinux.org>
